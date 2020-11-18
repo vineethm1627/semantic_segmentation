@@ -31,10 +31,8 @@ if img_file is not None:
     out_overlay = plt.imread("output_images/out_overlay.jpg")
     
     col1, col2 = st.beta_columns(2)
-    col1.header("Segmented Image")
-    col1.image(out, use_column_width = True)
+    col1.image(out, caption = "Segmented Image", use_column_width = True)
 
     
     out = plt.imread("output_images/out_overlay.jpg", 0)
-    col2.header("Overlay")
-    col2.image(out_overlay, use_column_width = True)
+    col2.image(out_overlay, caption = "Overlay", use_column_width = True)

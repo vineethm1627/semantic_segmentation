@@ -20,7 +20,6 @@ if img_file is not None:
     segment_image = semantic_segmentation()
 
     # loading the model deeplabv3+ trained on pascal voc dataset.
-    @st.cache(persist = True)
     segment_image.load_pascalvoc_model("deeplabv3_xception_tf_dim_ordering_tf_kernels.h5")
 
     # performing the segmentation on the input image

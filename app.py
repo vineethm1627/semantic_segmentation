@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pixellib
 from pixellib.semantic import semantic_segmentation
 
-
+DATA_URL = "deeplabv3_xception_tf_dim_ordering_tf_kernels.h5"
 st.title("Sematic Image Segmentation")
 st.sidebar.title("Semantic Image Segmentation")
 st.sidebar.markdown("deeplabv3+ trained on pascal voc dataset for Semantic Image Segmentation using PixelLib. Here, Different instances of the same object are segmented with the same color map.")
@@ -20,7 +20,7 @@ if img_file is not None:
     segment_image = semantic_segmentation()
 
     # loading the model deeplabv3+ trained on pascal voc dataset.
-    segment_image.load_pascalvoc_model("deeplabv3_xception_tf_dim_ordering_tf_kernels.h5")
+    segment_image.load_pascalvoc_model(DATA_URL)
 
     # performing the segmentation on the input image
     segment_image.segmentAsPascalvoc(img_file, output_image_name = "output_images/out.jpg")

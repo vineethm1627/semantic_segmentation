@@ -16,4 +16,6 @@ if img_file is not None:
     img = plt.imread(img_file, 0)
     st.image(img, caption = "Input Image", use_column_width = True)
     
+    # instantiating the semantic segmentation class
+    segment_image = semantic_segmentation()
     

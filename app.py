@@ -12,10 +12,6 @@ st.sidebar.image(pic, caption = "Model classes", use_column_width = True)
 st.set_option('deprecation.showfileUploaderEncoding', False)
 img_file = st.file_uploader("Upload the input image : ", type = ['jpg', 'jpeg', 'png'])
 
-@st.cache(persist = True)
-def load_weights():
-    segment_image.load_pascalvoc_model("deeplabv3_xception_tf_dim_ordering_tf_kernels.h5")
-
 if img_file is not None:
     img = plt.imread(img_file, 0)
     st.image(img, caption = "Input Image", use_column_width = True)
@@ -24,8 +20,8 @@ if img_file is not None:
     segment_image = semantic_segmentation()
 
     # loading the model deeplabv3+ trained on pascal voc dataset.
-    #segment_image.load_pascalvoc_model("deeplabv3_xception_tf_dim_ordering_tf_kernels.h5")
-    load_weights()
+    @st.cache(persist = True)
+    segment_image.load_pascalvoc_model("deeplabv3_xception_tf_dim_ordering_tf_kernels.h5")
 
     # performing the segmentation on the input image
     segment_image.segmentAsPascalvoc(img_file, output_image_name = "output_images/out.jpg")

@@ -1,5 +1,6 @@
 streamlit==0.71.0
 matplotlib==3.2.2
+pixellib==0.4.8
 opencv-contrib-python-headless
 tensorflow==2.3.0
-pixellib==0.4.8
+

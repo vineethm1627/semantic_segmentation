@@ -12,10 +12,34 @@ st.sidebar.image(pic, caption = "Model classes", use_column_width = True)
 st.set_option('deprecation.showfileUploaderEncoding', False)
 img_file = st.file_uploader("Upload the input image : ", type = ['jpg', 'jpeg', 'png'])
 
+@st.cache(persist = True)
+def load_weights():
+    segment_image.load_pascalvoc_model("deeplabv3_xception_tf_dim_ordering_tf_kernels.h5")
+
 if img_file is not None:
     img = plt.imread(img_file, 0)
     st.image(img, caption = "Input Image", use_column_width = True)
     
     # instantiating the semantic segmentation class
     segment_image = semantic_segmentation()
+
+    # loading the model deeplabv3+ trained on pascal voc dataset.
+    #segment_image.load_pascalvoc_model("deeplabv3_xception_tf_dim_ordering_tf_kernels.h5")
+    load_weights()
+
+    # performing the segmentation on the input image
+    segment_image.segmentAsPascalvoc(img_file, output_image_name = "output_images/out.jpg")
+    out = plt.imread("output_images/out.jpg", 0)
+
+    # performing the segmentation on the input image with overlay
+    segment_image.segmentAsPascalvoc(img_file, output_image_name = "output_images/out_overlay.jpg", overlay = True)
+    out_overlay = plt.imread("output_images/out_overlay.jpg")
     
+    col1, col2 = st.beta_columns(2)
+    col1.header("Segmented Image")
+    col1.image(out, use_column_width = True)
+
+    
+    out = plt.imread("output_images/out_overlay.jpg", 0)
+    col2.header("Overlay")
+    col2.image(out_overlay, use_column_width = True)

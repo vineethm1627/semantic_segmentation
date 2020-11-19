@@ -35,7 +35,4 @@ if img_file is not None:
     
     col1, col2 = st.beta_columns(2)
     col1.image(out, caption = "Segmented Image", use_column_width = True)
-
-    
-    out = plt.imread("output_images/out_overlay.jpg", 0)
     col2.image(out_overlay, caption = "Overlay", use_column_width = True)

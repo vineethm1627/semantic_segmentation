@@ -1,7 +1,7 @@
 import pixellib
 import matplotlib.pyplot as plt
 from pixellib.semantic import semantic_segmentation
-DATA_URL = "deeplabv3_xception_tf_dim_ordering_tf_kernels.h5"
+DATA_URL = ".\deeplabv3_xception_tf_dim_ordering_tf_kernels.h5"
 
 def prediction(img_file):
     # instantiating the semantic segmentation class

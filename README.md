@@ -12,7 +12,7 @@ Here, Different instances of the same object are segmented with the same color m
 4) To deploy the webapp simple type 
   `streamlit run app.py` and wait for the webapp to open in the browser.
 5) If the webapp doesn't open by default, keeping the terminal open, in the browser search
-  `https://localhost:8501/`
+  `localhost:8501/`
  
 You can now see the website up and running.
 
